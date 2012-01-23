@@ -8,7 +8,7 @@ module.exports = function(options) {
         req.sessionID = req.cookies[options.key];
         
         if (req.sessionID) {
-            options.store.get(req.sessionID, function(err, session) {
+            options.store.load(req.sessionID, function(err, session) {
                 if (err) return next(err);
                 req.session = session;
                 next();
